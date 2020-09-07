@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <style type="text/css" rel="stylesheet">
+    .border{
+      border: solid;
+    }
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+  column-span:all;
+}
+body {text-align: center;}
+</style>
+<script type="text/javascript" src="http://localhost:8080/PILL_REMINDER_APP/secure.js"></script>
+<script type="text/javascript">
+function verifylogin(){
+	var email=document.getElementById("email").value;
+	var password=document.getElementById("password").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/checkinfo"
+    	request = new XMLHttpRequest()
+    	request.open("post",url,true)
+    	request.onreadystatechange=function (){
+    		if(request.readyState==4 && request.status==200){
+    			message=request.responseText
+    			
+    			if(message=="USER DOES NOT EXIST"){
+    				alert("USER DOES NOT EXIST, CHECK ID OR CREATE A NEW ONE.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+    			}
+    			else if(message=="PASSWORD INCORECT"){
+    				alert("PASSWORD INCORRECT, TRY AGAIN.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+    			}
+    			else{
+    				alert("LOG IN SUCCESSFULLY.")
+    				sessionStorage.setItem("logged","true");
+    				sessionStorage.setItem("name",message.toUpperCase());
+    				sessionStorage.setItem("email", email);
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/welcome.html"
+    			}
+    		}
+	}
+    	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    	request.send("email="+email+"&password="+password);
+    	return false;
+}
+</script>
+</head>
+<body style="background-color:honeydew;">
+<div class="border">
+<div style="background-color: lightsteelblue;">
+<h2> <p style="text-align: center;">Login</p></h2> 
+</div>
+<br>
+<hr size="5" width="100%" color="black">  
+  <form method="post" action="#"></form>
+   <h1><p style="text-align:center;">Welcome to Pill Reminder</p></h1> 
+   <br><br><br>
+    <table class="center">
+    <tr>
+<td><p style="color:blue;">Email ID</p> </td>
+<td><input type="email"  id="email" required></td>
+</tr>
+<tr>
+<td><p style="color:blue">Password</p></td>
+<td><input type="password" id="password" required></td>
+</tr>
+</table>
+<h2><input type="button" value="Login" onclick="verifylogin()"></h2>
+    <a href="http://localhost:8080/PILL_REMINDER_APP/resetpass.html">Reset Password </a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="http://localhost:8080/PILL_REMINDER_APP/regis.html">New User ?</a>
+    <br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add medical Details</title>
+  <style>
+        entity{
+            width: 280px; display: inline-block; text-align: left;
+            color:rgb(6, 6, 53); font-weight: bold;font-size: 14;
+        }
+    </style>
+
+<script type="text/javascript">
+window.onload=function() {
+	uname=sessionStorage.getItem("name")
+	umail=sessionStorage.getItem("email")
+	console.log(umail)
+	if(uname == "null"){
+		location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+		alert("YOU NEED TO LOG IN FIRST.")
+		
+	}
+}
+function goToMedicalHistoryView(){
+	location.href="http://localhost:8080/PILL_REMINDER_APP/displayMedicalHistory.html"
+}
+function saveMedicalhistory() {
+	var relation = document.getElementById("relation").value;
+	var illness = document.getElementById("illnessid").value;
+	var doctorDetails = document.getElementById("docdet").value;
+	var medicine = document.getElementById("medid").value;
+	var startDate = document.getElementById("stdid").value;
+	var endDate = document.getElementById("endid").value;
+	var dosageAmount = document.getElementById("tbid").value;
+	var dosageFrequency = document.getElementById("dsgf").value;
+	var dosageTime = document.getElementById("dtmid").value;
+	var url = "http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/savemedinfo"
+	request = new XMLHttpRequest();
+	request.open("post", url, true);
+	request.onreadystatechange = function() {
+		if (request.readyState == 4 && request.status == 200) {
+			message = request.responseText;
+			alert(message);
+		}
+	}
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&relation="+relation+"&illness="+illness+"&doctorDetails="+doctorDetails+
+			     "&medicine="+medicine+"&startDate="+ startDate+"&endDate="+endDate+"&dosageAmount=" +dosageAmount+"&dosageFrequency=" + dosageFrequency+
+			     "&dosageTime="+dosageTime);
+	return false;
+}
+
+</script>
+</head>
+<body style="background-color:honeydew;">
+    <div style="background-color: lightsteelblue;">
+    <h1 style="text-align:center; height: 80px;">Registration</h1>
+    <hr size="5" style="background-color: black;">
+    </div>
+   <div style="text-align:center;">
+    <h2 style="color:steelblue;">Please Add Your Medical History</h2>
+  <form  >
+  <entity>Relation:</entity>
+  <select  name="inrelation" id="relation" style="width: 240px;">
+  				<option value="Father">Father</option>
+  				<option value="Mother">Mother</option>
+ 				<option value="Spouse">Spouse</option>
+ 				<option value="Children">Children</option>
+ 				<option value="Father In Law">Father-In-Law</option>
+ 				<option value="Mother In Law">Mother-In-Law</option>
+  				</select><br>
+  <entity>Illness:</entity>
+  <input type="text" name="illness" id="illnessid" style="width: 240px;"><br>
+  <entity>Doctor Details:</entity>
+  <input type="text" name="doctordet" id="docdet" style="width: 240px;"><br>
+  <entity>Medicines:</entity>
+  <input type="text" name="medicines" id="medid" style="width: 240px;"><br>
+  <entity>Start Date:</entity>
+  <input type="date" name="strtdate" id="stdid" style="width: 240px;"><br>
+  <entity>End Date:</entity>
+  <input type="date" name="enddate" id="endid" style="width: 240px;"><br>
+  <entity>Dosage Amount:</entity>
+  <input type="text" name="tablets" id="tbid" style="width: 240px;"><br>
+  <entity>Dosage Frequency:</entity>
+  <select  name="dosagef" id="dsgf" style="width: 240px;"><br>
+  <option value="once">Daily-Once</option>
+  <option value="twice">Daily-Twice</option>
+  <option value="thrice">Daily-Thrice</option>
+  </select><br>
+  <entity>Dosage Time:</entity>
+  <input type="text" name="dosgtm"  id="dtmid" style="width: 240px;"><br>
+  <br><br>
+ <button type="button" onclick="saveMedicalhistory() ">Save Here!</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" onclick="goToMedicalHistoryView()" value="VIEW MEDICAL HISTORY">
+</form>
+</div>
+</body>
+</html>

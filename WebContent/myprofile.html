@@ -1,0 +1,682 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style>
+        entity{
+            width: 280px; display: inline-block; text-align: left;
+            color:rgb(6, 6, 53); font-weight: bold;font-size: 14;
+        }
+#menu-bar {
+  width: 95%;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+  height: 25px;
+  line-height: 100%;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  position:relative;
+}
+#menu-bar li {
+  margin: 0px 0px 6px 0px;
+  padding: 0px 6px 0px 6px;
+  float: left;
+  position: relative;
+  list-style: none;
+}
+#menu-bar a {
+  font-weight: bold;
+  font-family: arial;
+  font-style: normal;
+  font-size: 12px;
+  color: #444444;
+  text-decoration: none;
+  display: block;
+  padding: 6px 10px 6px 10px;
+  margin: 0;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#menu-bar li ul li a {
+  margin: 0;
+}
+#menu-bar .active a, #menu-bar li:hover > a {
+  background: #0399D4;
+  background: linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -ms-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#A1A1A1));
+  background: -moz-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  color: #444444;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+#menu-bar ul li:hover a, #menu-bar li:hover li a {
+  background: none;
+  border: none;
+  color: cornflowerblue;
+  -box-shadow: none;
+}
+#menu-bar ul a:hover {
+  background: #0399D4 !important;
+  background: linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -ms-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#04ACEC), to(#0186BA)) !important;
+  background: -moz-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  color: #FFFFFF !important;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+#menu-bar li:hover > ul {
+  display: block;
+}
+#menu-bar ul {
+  background: #DDDDDD;
+  background: linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -ms-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CFCFCF));
+  background: -moz-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 185px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  border: solid 1px #141b83;
+  border-radius: 6px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 3px #222222;
+  -moz-box-shadow: 2px 2px 3px #222222;
+  box-shadow: 2px 2px 3px #222222;
+}
+#menu-bar ul li {
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+#menu-bar ul a {
+  padding:8px 0px 8px 10px;
+  color:#0f46bb !important;
+  font-size:12px;
+  font-style:normal;
+  font-family:arial;
+  font-weight: normal;
+}
+#menu-bar ul li:first-child > a {
+  border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+}
+#menu-bar ul li:last-child > a {
+  border-bottom-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+}
+#menu-bar:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#menu-bar {
+  display: contents;
+}
+.floatleft {
+    float:left;
+}
+.floatright {
+    float:right;
+}
+    </style>
+<script type="text/javascript" src="http://localhost:8080/PILL_REMINDER_APP/logoff.js"></script>
+<script type="text/javascript">
+window.onload=function() {
+	uname=sessionStorage.getItem("name")
+	umail=sessionStorage.getItem("email")
+	console.log(umail)
+	if(uname == "null"){
+		location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+		alert("YOU NEED TO LOG IN FIRST.")
+		
+	}
+}
+function enable() {
+	document.getElementById("outname").disabled = false; 
+	document.getElementById("outemail").disabled = false; 
+	document.getElementById("outcontact").disabled = false; 
+	document.getElementById("outbldgrp").disabled = false; 
+	document.getElementById("outdob").disabled = false; 
+	document.getElementById("outweight").disabled = false; 
+	document.getElementById("outheight").disabled = false; 
+	} 
+
+function displayDep() {
+	var relation=document.getElementById("outrelation").value
+	var url = "http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/viewdepinfo";
+	let request = new XMLHttpRequest();
+	request.open("post",url,true,);
+	request.onreadystatechange = function() {
+	    if (request.readyState == 4 && request.status == 200) {
+			var user = request.responseText;
+			console.log(user);
+			user = JSON.parse(user);
+			 document.getElementById("outname").value=user.depname;
+			 document.getElementById("outemail").value=user.depemail;
+			 document.getElementById("outcontact").value=user.depcontact;
+			 document.getElementById("outbldgrp").value=user.depbldgrp;
+			 document.getElementById("outdob").value=user.depdob;
+			 document.getElementById("outweight").value=user.depweight;
+			 document.getElementById("outheight").value=user.depheight;
+			 document.getElementById("outrelationship").value=user.relation;
+	    }
+	};
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&relation="+relation);
+	return false;
+    }
+function updateDep(){
+	var depname=document.getElementById("outname").value;
+	var depemail=document.getElementById("outemail").value;
+	var relation=document.getElementById("outrelationship").value;
+	var depcontact=document.getElementById("outcontact").value;
+	var depheight=document.getElementById("outheight").value;
+	var depdob=document.getElementById("outdob").value;
+	var depbldgrp=document.getElementById("outbldgrp").value;
+	var depweight=document.getElementById("outweight").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/updatedepinfo"
+	request = new XMLHttpRequest()
+	request.open("post",url,true)
+	request.onreadystatechange=function (){
+		if(request.readyState==4 && request.status==200){
+			message=request.responseText
+			alert(message)
+		}
+	};
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&depname="+depname+"&depemail="+depemail+"&relation="+relation+"&depcontact="+depcontact+"&depheight="+depheight+"&depdob="+depdob+"&depweight="+depweight+"&depbldgrp="+depbldgrp);
+	return false;
+}
+function addDep(){
+	var depname=document.getElementById("inname").value;
+	var depemail=document.getElementById("inemail").value;
+	var depcontact=document.getElementById("incontact").value;
+	var depheight=document.getElementById("inheight").value;
+	var depdob=document.getElementById("indob").value;
+	var depbldgrp=document.getElementById("inbldgrp").value;
+	var depweight=document.getElementById("inweight").value;
+	var relation=document.getElementById("inrelation").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/savedepinfo"
+	request = new XMLHttpRequest()
+	request.open("post",url,true)
+	request.onreadystatechange=function (){
+		if(request.readyState==4 && request.status==200){
+			message=request.responseText
+			alert(message)
+		}
+	};
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&depname="+depname+"&depemail="+depemail+"&depcontact="+depcontact+"&depheight="+depheight+"&depdob="+depdob+"&depweight="+depweight+"&relation="+relation+"&depbldgrp="+depbldgrp);
+	return false;
+}
+
+</script>
+</head>
+<body style="background-color:honeydew;">
+    <div style="background-color: lightsteelblue; height: 35px;">
+      <ul id="menu-bar">
+        <div class="floatleft">
+        <li><a href="#">MENU</a>
+         <ul>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/welcome.html">Home</a></li>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/myprofile.html">My Profile</a></li>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/displayMedicalHistory.html">Medical History</a></li>
+         </ul>
+        </li>
+      </div>
+        <div class="floatright">
+        <li><input type="button" value="Log Out" onclick="logoff()"></li></div>
+       </ul>
+    </div>
+    <hr size="5" width="100%" style="background-color: black;">
+<div>
+    <h2 style="text-align: center;"><u>My Profile</u></h2>
+<table border="cols" align="center" style="width: 100%;">
+  <tr>
+    <td align="center" colspan="2">
+    <img src="avatar.png" style="width: 2cm;height: 2cm;"></td>
+  </tr>
+    <tr>
+        <td align="center">
+          <div style="align-items: center;">
+            <form method="post" onsubmit="addDep()" action="#">
+               <u><h2>Add Information</h2></u><br><br><br><br>
+                <entity>Name:</entity>
+                <input type="text" name="name" style="width: 240px;" id="inname"><br>
+                <entity>E-Mail:</entity>
+                <input type="email" name="email" style="width: 240px;" id="inemail"><br>
+                <entity>Relation:</entity>
+                <select  name="inrelation" id="inrelation" style="width: 240px;">
+  				<option value="Father">Father</option>
+  				<option value="Mother">Mother</option>
+ 				<option value="Spouse">Spouse</option>
+ 				<option value="Children">Children</option>
+ 				<option value="Father In Law">Father-In-Law</option>
+ 				<option value="Mother In Law">Mother-In-Law</option>
+  				</select><br>
+                <entity>Contact Number:</entity>
+                <input type="text" name="contact" style="width: 240px;" id="incontact"><br>
+                <entity>Blood Group:</entity>
+                <input type="text" name="bldgrp" style="width: 240px;" id="inbldgrp"><br>
+                <entity>Date of Birth:</entity>
+                <input type="date" name="dob" style="width: 240px;" id="indob"><br>
+                <entity>Weight:</entity>
+                <input type="text" name="weight" style="width: 240px;" id="inweight"><br>
+                <entity>Height:</entity>
+                <input type="text" name="Height" style="width: 240px;" id="inheight"><br><br>
+                <input type="submit" value="Add Dependent">&nbsp;&nbsp;&nbsp;&nbsp;
+            </form>  
+          </div>
+        </td>
+        <td align="center">
+          <br><u><h2>View/Edit Information</h2></u>
+            <div style="align-items: center;">
+            <form method="post" action="#">
+            <entity>Relation:</entity>
+            <select  name="outrelation" id="outrelation" style="width: 240px;"><br>
+  				<option value="Father">Father</option>
+  				<option value="Mother">Mother</option>
+ 				<option value="Spouse">Spouse</option>
+ 				<option value="Children">Children</option>
+ 				<option value="Father In Law">Father-In-Law</option>
+ 				<option value="Mother In Law">Mother-In-Law</option>
+  				</select><br><br>
+  				<input type="submit" name="Show Details" value="Show Details" onclick="displayDep()"><br><br>
+  				</form>
+  				<form method="post" action="#">
+  				<entity>Relation:</entity>
+                <input type="text" name="name" style="width: 240px;" id="outrelationship" disabled ><br>
+                <entity>Name:</entity>
+                <input type="text" name="name" style="width: 240px;" id="outname" disabled><br>
+                <entity>E-Mail Address:</entity>
+                <input type="email" name="email" style="width: 240px;" id="outemail" disabled><br>
+                <entity>Contact Number:</entity>
+                <input type="text" name="contact" style="width: 240px;" id="outcontact" disabled><br>
+                <entity>Blood Group:</entity>
+                <input type="text" name="bldgrp" style="width: 240px;" id="outbldgrp" disabled><br>
+                <entity>Date of Birth:</entity>
+                <input type="date" name="dob" style="width: 240px;" id="outdob" disabled><br>
+                <entity>Weight:</entity>
+                <input type="number" name="weight" style="width: 240px;" id="outweight" disabled><br>
+                <entity>Height:</entity>
+                <input type="text" name="Height" style="width: 240px;" id="outheight" disabled><br><br>
+                <input type="button" name="Edit" value="Edit" onclick="enable()" > &nbsp;&nbsp; &nbsp;&nbsp;
+               <input type="submit" value="Update Dependent" onclick="updateDep()"><br><br>
+            </form>  
+        </div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+   <style type="text/css" rel="stylesheet">
+    .border{
+      border: solid;
+    }
+    </style>
+<style>
+        entity{
+            width: 280px; display: inline-block; text-align: left;
+            color:rgb(6, 6, 53); font-weight: bold;font-size: 14;
+        }
+#menu-bar {
+  width: 95%;
+  margin: 0px 0px 0px 0px;
+  padding: 5px 5px 5px 5px;
+  height: 25px;
+  line-height: 100%;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  position:relative;
+}
+#menu-bar li {
+  margin: 0px 0px 6px 0px;
+  padding: 0px 6px 0px 6px;
+  float: left;
+  position: relative;
+  list-style: none;
+}
+#menu-bar a {
+  font-weight: bold;
+  font-family: arial;
+  font-style: normal;
+  font-size: 12px;
+  color: #444444;
+  text-decoration: none;
+  display: block;
+  padding: 6px 10px 6px 10px;
+  margin: 0;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#menu-bar li ul li a {
+  margin: 0;
+}
+#menu-bar .active a, #menu-bar li:hover > a {
+  background: #0399D4;
+  background: linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -ms-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  background: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#A1A1A1));
+  background: -moz-linear-gradient(top,  #EBEBEB,  #A1A1A1);
+  color: #444444;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+#menu-bar ul li:hover a, #menu-bar li:hover li a {
+  background: none;
+  border: none;
+  color: cornflowerblue;
+  -box-shadow: none;
+}
+#menu-bar ul a:hover {
+  background: #0399D4 !important;
+  background: linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -ms-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#04ACEC), to(#0186BA)) !important;
+  background: -moz-linear-gradient(top,  #04ACEC,  #0186BA) !important;
+  color: #FFFFFF !important;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+#menu-bar li:hover > ul {
+  display: block;
+}
+#menu-bar ul {
+  background: #DDDDDD;
+  background: linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -ms-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CFCFCF));
+  background: -moz-linear-gradient(top,  #FFFFFF,  #CFCFCF);
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 185px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  border: solid 1px #141b83;
+  border-radius: 6px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 3px #222222;
+  -moz-box-shadow: 2px 2px 3px #222222;
+  box-shadow: 2px 2px 3px #222222;
+}
+#menu-bar ul li {
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+#menu-bar ul a {
+  padding:8px 0px 8px 10px;
+  color:#0f46bb !important;
+  font-size:12px;
+  font-style:normal;
+  font-family:arial;
+  font-weight: normal;
+}
+#menu-bar ul li:first-child > a {
+  border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+}
+#menu-bar ul li:last-child > a {
+  border-bottom-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+}
+#menu-bar:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#menu-bar {
+  display: contents;
+}
+.floatleft {
+    float:left;
+}
+.floatright {
+    float:right;
+}
+    </style>
+<script type="text/javascript" src="http://localhost:8080/restdemo/logoff.js"></script>
+<script type="text/javascript">
+window.onload=function() {
+	uname=sessionStorage.getItem("name")
+	umail=sessionStorage.getItem("email")
+	console.log(umail)
+	if(uname == "null"){
+		location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+		alert("YOU NEED TO LOG IN FIRST.")
+		
+	}
+}
+function enable() {
+	document.getElementById("outname").disabled = false; 
+	document.getElementById("outemail").disabled = false; 
+	document.getElementById("outcontact").disabled = false; 
+	document.getElementById("outbldgrp").disabled = false; 
+	document.getElementById("outdob").disabled = false; 
+	document.getElementById("outweight").disabled = false; 
+	document.getElementById("outheight").disabled = false; 
+	} 
+
+function displayDep() {
+	var relation=document.getElementById("outrelation").value
+	var url = "http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/viewdepinfo";
+	let request = new XMLHttpRequest();
+	request.open("post",url,true,);
+	request.onreadystatechange = function() {
+	    if (request.readyState == 4 && request.status == 200) {
+			var user = request.responseText;
+			console.log(user);
+			user = JSON.parse(user);
+			 document.getElementById("outname").value=user.depname;
+			 document.getElementById("outemail").value=user.depemail;
+			 document.getElementById("outcontact").value=user.depcontact;
+			 document.getElementById("outbldgrp").value=user.depbldgrp;
+			 document.getElementById("outdob").value=user.depdob;
+			 document.getElementById("outweight").value=user.depweight;
+			 document.getElementById("outheight").value=user.depheight;
+			 document.getElementById("outrelationship").value=user.relation;
+	    }
+	}
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&relation="+relation);
+	return false;
+    }
+function updateDep(){
+	var depname=document.getElementById("outname").value;
+	var depemail=document.getElementById("outemail").value;
+	var relation=document.getElementById("outrelationship").value;
+	var depcontact=document.getElementById("outcontact").value;
+	var depheight=document.getElementById("outheight").value;
+	var depdob=document.getElementById("outdob").value;
+	var depbldgrp=document.getElementById("outbldgrp").value;
+	var depweight=document.getElementById("outweight").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/updatedepinfo"
+	request = new XMLHttpRequest()
+	request.open("post",url,true)
+	request.onreadystatechange=function (){
+		if(request.readyState==4 && request.status==200){
+			message=request.responseText
+			alert(message)
+		}
+	};
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&depname="+depname+"&depemail="+depemail+"&relation="+relation+"&depcontact="+depcontact+"&depheight="+depheight+"&depdob="+depdob+"&depweight="+depweight+"&depbldgrp="+depbldgrp);
+	return false;
+}
+function addDep(){
+	var depname=document.getElementById("inname").value;
+	var depemail=document.getElementById("inemail").value;
+	var relation=document.getElementById("inrelation").value;
+	var depcontact=document.getElementById("incontact").value;
+	var depheight=document.getElementById("inheight").value;
+	var depdob=document.getElementById("indob").value;
+	var depbldgrp=document.getElementById("inbldgrp").value;
+	var depweight=document.getElementById("inweight").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/savedepinfo"
+	request = new XMLHttpRequest()
+	request.open("post",url,true)
+	request.onreadystatechange=function (){
+		if(request.readyState==4 && request.status==200){
+			message=request.responseText
+			alert(message)
+		}
+	};
+	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	request.send("umail="+umail+"&depname="+depname+"&depemail="+depemail+"&relation="+relation+"&depcontact="+depcontact+"&depheight="+depheight+"&depdob="+depdob+"&depweight="+depweight+"&depbldgrp="+depbldgrp);
+	return false;
+}
+</script>
+</head>
+<body class="border" style="background-color:honeydew;"></br>
+    <div style="background-color: lightsteelblue; height: 35px;">
+      <ul id="menu-bar">
+        <div class="floatleft">
+        <li><a href="#">MENU</a>
+         <ul>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/welcome.html">Home</a></li>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/myprofile.html">My Profile</a></li>
+          <li><a href="http://localhost:8080/PILL_REMINDER_APP/displayMedicalHistory.html">Medical History</a></li>
+         </ul>
+        </li>
+      </div>
+        <div class="floatright">
+        <li><input type="button" value="Log Out" onclick="logoff()"></li></div>
+       </ul>
+    </div>
+    <hr size="5" width="100%" style="background-color: black;">
+<div>
+    <h1 style="text-align: center;">My Profile</h1>
+    <table border="cols" align="center" style="width: 100%;">
+  <tr>
+    <td align="center" colspan="2">
+    <img src="avatar.png" style="width: 2cm;height: 2cm;"></td>
+  </tr>
+    <tr>
+        <td align="center">
+          <div style="align-items: center;">
+            <form method="post" onsubmit="addDep()" action="#">
+              <u><h2>Add Information</h2></u><br><br><br><br><br><br>
+                <entity>Name:</entity>
+                <input type="text" name="name" style="width: 240px;" id="inname"><br>
+                <entity>Relation:</entity>
+                <select  name="relation" id="inrelation" style="width: 240px;"><br>
+                <option value="Self">Self</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Mother-in-law">Mother-in-law</option>
+                <option value="Father-in-law">Father-in-law</option>
+                </select><br>
+                <entity>E-Mail:</entity>
+                <input type="email" name="email" style="width: 240px;" id="inemail"><br>
+                <entity>Contact Number:</entity>
+                <input type="text" name="contact" style="width: 240px;" id="incontact"><br>
+                <entity>Blood Group:</entity>
+                <input type="text" name="bldgrp" style="width: 240px;" id="inbldgrp"><br>
+                <entity>Date of Birth:</entity>
+                <input type="date" name="dob" style="width: 240px;" id="indob"><br>
+                <entity>Weight:</entity>
+                <input type="text" name="weight" style="width: 240px;" id="inweight"><br>
+                <entity>Height:</entity>
+                <input type="text" name="Height" style="width: 240px;" id="inheight"><br><br>
+                <input type="submit" value="Add Dependent">&nbsp;&nbsp;&nbsp;&nbsp;
+            </form>  
+          </div>
+        </td>
+        <td align="center">
+          <br><br><u><h2>View/Update Information</h2></u><br><br>
+            <div style="align-items: center;">
+            <form method="post" action="#">
+            	<entity> Choose Relation:</entity>
+            	<select  name="relation" id="outrelation" style="width: 240px;"><br>
+                <option value="Self">Self</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Spouse">Spouse</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Mother-in-law">Mother-in-law</option>
+                <option value="Father-in-law">Father-in-law</option>
+                </select><br> 
+                </form>
+                </br> 
+              <input type="submit" name="Show Details" value="Show Details" onclick="displayDep()">
+              </div>
+              <form action="">
+               <div style="align-items: center;"><br>
+                <entity>Relationship:</entity>
+                <input type="text" name="name" style="width: 240px;" id="outrelationship" disabled="disabled" ><br>
+                <entity>Name:</entity>
+                <input type="text" name="name" style="width: 240px;" id="outname" disabled="disabled" ><br>
+                <entity>E-Mail Address:</entity>
+                <input type="text" name="email" style="width: 240px;" id="outemail" disabled="disabled"><br>
+                <entity>Contact Number:</entity>
+                <input type="text" name="contact" style="width: 240px;" id="outcontact" disabled="disabled"><br>
+                <entity>Blood Group:</entity>
+                <input type="text" name="bldgrp" style="width: 240px;" id="outbldgrp" disabled="disabled"><br>
+                <entity>Date of Birth:</entity>
+                <input type="date" name="dob" style="width: 240px;" id="outdob" disabled="disabled"><br>
+                <entity>Weight:</entity>
+                <input type="text" name="weight" style="width: 240px;" id="outweight" disabled="disabled"><br>
+                <entity>Height:</entity>
+                <input type="text" name="Height" style="width: 240px;" id="outheight" disabled="disabled"><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                 <input type="button" name="Edit" value="Edit" onclick="enable()" > &nbsp;&nbsp; &nbsp;&nbsp;
+               <input type="submit" value="Update Dependent" onclick="updateDep()"><br><br>
+                </form>
+        </div>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

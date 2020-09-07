@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PILL REMINDER APP">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="validation-api-2.0.1.Final.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/validation-api-2.0.1.Final/validation-api-2.0.1.Final">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="aopalliance-repackaged-2.5.0.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/aopalliance-repackaged-2.5.0/aopalliance-repackaged-2.5.0">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="yasson-1.0.3.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/yasson-1.0.3/yasson-1.0.3">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="PILL_REMINDER_APP"/>
+        <property name="java-output-path" value="/PILL REMINDER APP/build/classes"/>
+    </wb-module>
+</project-modules>

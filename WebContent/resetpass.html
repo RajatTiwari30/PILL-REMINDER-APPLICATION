@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <style type="text/css" rel="stylesheet">
+    .border{
+      border: solid;
+    }
+    entity{
+            width: 280px; display: inline-block; text-align: left;
+            color:rgb(6, 6, 53); font-weight: bold;font-size: 14;
+        }
+body {text-align: center;}
+</style>
+<script type="text/javascript">
+function homepage(){
+	alert("PROCESS CANCELLED.")
+	window.location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+}
+function checklength(){
+	var newpassword=document.getElementById("newpassword").value;
+	len=newpassword.length
+	if(len<5){
+		alert("NEW PASSWORD SHOULD BE MINIMUM 5 CHARACTERS LONG.")
+		document.getElementById("newpassword").value = ""
+	}
+}
+function checkrepass(){
+	var newpassword=document.getElementById("newpassword").value;
+	var renewpassword=document.getElementById("renewpassword").value;
+	if(newpassword!=renewpassword){
+		alert("THIS PASSWORD SHOULD MATCH ABOVE PASSWORD")
+		window.location.href="http://localhost:8080/PILL_REMINDER_APP/resetpass.html"
+	}
+}
+function changepass(){
+	var email=document.getElementById("email").value;
+	var password=document.getElementById("password").value;
+	var newpassword=document.getElementById("newpassword").value;
+	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/resetpass"
+    	request = new XMLHttpRequest()
+    	request.open("post",url,true)
+    	request.onreadystatechange=function (){
+    		if(request.readyState==4 && request.status==200){
+    			message=request.responseText
+    			if(message=="true"){
+    				alert("PASSWORD RESET SUCCESSFUL.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+    			}
+    			else if(message=="USER DOES NOT EXIST"){
+    				alert("USER DOES NOT EXIST, CHECK ID OR CREATE A NEW ONE.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/resetpass.html"
+    			}
+    			else if(message=="PASSWORD INCORECT"){
+    				alert("CURRENT PASSWORD INCORRECT, TRY AGAIN.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/resetpass.html"
+    			}
+    			else{
+    				alert("UNKNOWN ERROR.")
+    			}
+    		}
+	}
+    	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    	request.send("email="+email+"&password="+password+"&newpassword="+newpassword);
+    	return false;
+}
+
+</script>
+</head>
+<body style="background-color:honeydew;">
+<div class="border">
+    <div style="background-color: lightsteelblue;">
+        <h2> <p style="text-align: center;">Reset Password</p></h2> 
+        </div>
+        <br>
+<hr size="5" width="100%" color="black">  
+    <div style="text-align: center;">
+    <form method="post" action="#">
+<entity>Email ID:</entity>
+<input type="text"  id="email" required><br><br>
+<entity>Old Password:</entity>
+<input type="password" id="password" required><br><br>
+<entity>New Password:</entity>
+<input type="password" id="newpassword" onblur="checklength()" required><br><br>
+<entity>Confirm New Password:</entity>
+<input type="password" id="renewpassword"><br><br>
+<input type="button" id="chk" value="Validate Confirm Password" onclick="checkrepass()"><br><br>
+<input type="button" value="Save" onclick="changepass()"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" onclick="homepage()"><br>
+</form>
+</div>
+</body>
+</html>

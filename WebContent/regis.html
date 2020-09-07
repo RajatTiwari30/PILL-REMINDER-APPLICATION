@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+    <style>
+        entity{
+            width: 280px; display: inline-block; text-align: left;
+            color:rgb(6, 6, 53); font-weight: bold;font-size: 14;
+        }
+    </style>
+    <script type="text/javascript">
+    function checklength(){
+    	var password=document.getElementById("password").value;
+    	len=password.length
+    	if(len<5){
+    		alert("PASSWORD SHOULD BE MINIMUM 5 CHARACTERS LONG.")
+    		document.getElementById("password").value = ""
+    	}
+    }
+    function checkConfirmPass(){
+    	var password=document.getElementById("password").value;
+    	var repassword=document.getElementById("repassword").value;
+    	if(password!=repassword){
+    		alert("THIS PASSWORD SHOULD MATCH ABOVE PASSWORD")
+    		document.getElementById("repassword").value = ""
+    	}
+    }
+    function homepage(){
+    	alert("REGISTRATION CANCELLED.")
+    	window.location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+    }
+    function addmember(){
+    	var name=document.getElementById("name").value;
+    	var email=document.getElementById("email").value;
+    	var contact=document.getElementById("contact").value;
+    	var country=document.getElementById("country").value;
+    	var dob=document.getElementById("dob").value;
+    	var password=document.getElementById("password").value;
+    	//var repassword=document.getElementById("repassword").value;
+    	var url="http://localhost:8080/PILL_REMINDER_APP/ds/pillreminderpath/saveinfo"
+    	request = new XMLHttpRequest()
+    	request.open("post",url,true)
+    	//request.onreadystatechange();
+    	/* request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    	request.send("name="+name+"&email="+email+"&contact="+contact+"&country="+country+"&dob="+dob+"&password="+password); */
+    	request.onreadystatechange=function (){
+    		if(request.readyState==4 && request.status==200){
+    			message=request.responseText
+    			if(message=="DETAILS SAVED."){
+    				alert("DETAILS SAVED.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/login.html"
+    			}
+    			else if(message=="ALREADY EXISTS."){
+    				alert("USER ALREADY EXISTS, TRY LOGGING IN OR USE DIFFERENT MAIL ID TO SIGN UP.")
+    				location.href="http://localhost:8080/PILL_REMINDER_APP/regis.html"
+    			}
+    		}
+    	}
+    	request.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    	request.send("name="+name+"&email="+email+"&contact="+contact+"&country="+country+"&dob="+dob+"&password="+password);
+    	//some more lines of execution
+    	return false;
+    }
+    </script>
+</head>
+<body style="background-color:honeydew;">
+    <div style="background-color: lightsteelblue;">
+    <h1 style="text-align:center; height: 80px;">Registration</h1>
+    <hr size="5" style="background-color: black;">
+    </div>
+<div style="text-align:center;">
+    <h2 style="color:steelblue;">Please enter below the information to Register!</h2>
+    <form method="post" action="#">
+        <entity>Name:*</entity>
+        <input type="text" id="name" style="width: 240px;" required><br><br>
+        <entity>E-Mail Address:*</entity>
+        <input type="email" id="email" style="width: 240px;" required><br><br>
+        <entity>Contact Number:</entity>
+        <input type="text" id="contact" style="width: 240px;"><br><br>
+        <entity>Country:</entity>
+        <input type="text" id="country" style="width: 240px;"><br><br>
+        <entity>Date of Birth:</entity>
+        <input type="date" id="dob" style="width: 240px;"><br><br>
+        <entity>Password:*</entity>
+        <input type="password" id="password" style="width: 240px;" onblur="checklength()" required ><br><br>
+        <entity>Confirm Password:*</entity>
+        <input type="password" id="repassword" style="width: 240px;" required><br><br>
+        <input type="button" id="chk" value="Validate Confirm Password" onclick="checkConfirmPass()"> <br><br>
+        <input type="button" name="register" value="Register" onclick="addmember()"> &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" name="cancel" value="Cancel" onclick="homepage()"><br>
+    </form>
+</div>
+
+</body>
+
+</html>
